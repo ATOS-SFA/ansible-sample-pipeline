@@ -23,7 +23,7 @@ jobs:
         targets: "main.yaml"
   
   deploy-ansible-playbook:
-    needs: verify
+    needs: ansible-lint-check
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
