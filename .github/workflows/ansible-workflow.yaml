@@ -1,0 +1,36 @@
+name: deploy ansible and run ansible playbook
+
+on:
+  push:
+    branches: [main]
+
+jobs:  
+  ansible-lint-check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v2
+    
+    - name: Set up Ansible
+      run: |
+        sudo apt-get -y update; \
+        sudo apt-get -y install ansible; \
+        ansible --version
+                      
+    - name: Lint Ansible Playbook
+      uses: ansible/ansible-lint-action@main
+      with:
+        targets: "main.yaml"
+  
+  deploy-ansible-playbook:
+    needs: ansible-lint-check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Running playbook
+      run: ansible-playbook main.yaml
+
+    - name: checking status 
+      run: sudo systemctl status apache2   
+
