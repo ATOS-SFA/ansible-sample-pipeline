@@ -18,10 +18,11 @@ jobs:
     #     ansible --version
 
     - name: Connect to Azure VM 
-      run: |
-        echo ${{ secrets.AZURE_PEM }} >> yamini.pem
-        cat yamini.pem        
-        chmod 400 yamini.pem
+      run: |        
+        yamini=${{ secrets.AZURE_PEM }} 
+        echo yamini >> test.pem
+              
+        chmod 400 test.pem
         ll
 
         ssh -i yamini.pem azureuser@20.103.151.129
