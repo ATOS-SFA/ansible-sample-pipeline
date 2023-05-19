@@ -5,7 +5,7 @@
   tasks:
 
     - name: List files
-      ansible.builtin.shell: ls -al
+      command: ls -al
     # - name: Ensure apache is at the latest version
     #   ansible.builtin.apt:
     #     name: apache2

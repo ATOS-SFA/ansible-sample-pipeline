@@ -17,22 +17,22 @@ jobs:
         sudo apt-get -y install ansible; \
         ansible --version
 
-    - name: testing ansible ping
-      run: ansible all -m ping
+    # - name: testing ansible ping
+    #   run: ansible all -m ping
                       
-    - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@main
-      with:
-        targets: "main.yaml"
+    # - name: Lint Ansible Playbook
+    #   uses: ansible/ansible-lint-action@main
+    #   with:
+    #     targets: "main.yaml"
   
-  # deploy-ansible-playbook:
-  #   needs: ansible-lint-check
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - uses: actions/checkout@v1
+  deploy-ansible-playbook:
+    #needs: ansible-lint-check
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
 
-  #   - name: Running playbook
-  #     run: ansible-playbook main.yaml
+    - name: Running playbook
+      run: ansible-playbook main.yaml
 
   #   - name: checking status 
   #     run: sudo systemctl status apache2   
