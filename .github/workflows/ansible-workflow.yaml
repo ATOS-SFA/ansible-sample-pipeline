@@ -6,7 +6,7 @@ on:
 
 jobs:  
   ansible-lint-check:
-    runs-on: ari
+    runs-on: ubuntu-latest
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
@@ -16,6 +16,9 @@ jobs:
         sudo apt-get -y update; \
         sudo apt-get -y install ansible; \
         ansible --version
+
+    - namne: testing ansible ping
+      run: ansible all -m ping
                       
   #   - name: Lint Ansible Playbook
   #     uses: ansible/ansible-lint-action@main

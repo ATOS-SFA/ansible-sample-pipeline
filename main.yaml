@@ -1,5 +1,5 @@
 - name: Playbook
-  hosts: localhost
+  hosts: 20.103.151.129
   become: true
   become_user: root
   tasks:
