@@ -11,14 +11,17 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v2
     
-    - name: Set up Ansible
-      run: |
-        sudo apt-get -y update; \
-        sudo apt-get -y install ansible; \
-        ansible --version
+    # - name: Set up Ansible
+    #   run: |
+    #     sudo apt-get -y update; \
+    #     sudo apt-get -y install ansible; \
+    #     ansible --version
 
     - name: Connect to Azure VM 
-      run: ssh -i ${{ secrets.AZURE_PEM }} azureuser@20.103.151.129
+      run: |
+        echo ${{ secrets.AZURE_PEM }} >> yamini.pem
+        cat pem      
+        ssh -i ${{ secrets.AZURE_PEM }} azureuser@20.103.151.129
 
     - name: testing ansible ping
       run: ansible all -i 20.103.151.129
@@ -28,14 +31,14 @@ jobs:
     #   with:
     #     targets: "main.yaml"
   
-  deploy-ansible-playbook:
-    #needs: ansible-lint-check
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
+  # deploy-ansible-playbook:
+  #   #needs: ansible-lint-check
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v1
 
-    - name: Running playbook
-      run: ansible-playbook main.yaml
+  #   - name: Running playbook
+  #     run: ansible-playbook main.yaml
 
   #   - name: checking status 
   #     run: sudo systemctl status apache2   
