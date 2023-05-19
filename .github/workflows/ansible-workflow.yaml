@@ -21,6 +21,7 @@ jobs:
       run: |
         ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y        
         ls /home/runner/.ssh/
+        cd /home/runner/
         yamini=${{ secrets.AZURE_PEM }} 
         echo yamini >> test.pem              
         chmod 400 test.pem
