@@ -17,8 +17,11 @@ jobs:
         sudo apt-get -y install ansible; \
         ansible --version
 
-    # - name: testing ansible ping
-    #   run: ansible all -m ping
+    - name: Connect to Azure VM 
+      run: ssh -i ${{ secrets.AZURE_PEM }} azureuser@20.103.151.129
+
+    - name: testing ansible ping
+      run: ansible all -i 20.103.151.129
                       
     # - name: Lint Ansible Playbook
     #   uses: ansible/ansible-lint-action@main
