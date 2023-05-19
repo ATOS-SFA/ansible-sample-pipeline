@@ -22,6 +22,8 @@ jobs:
     - name: Connect to Azure VM 
       run: |
         ls
+        cd to_deploy
+        ls
         
         ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y  
               
