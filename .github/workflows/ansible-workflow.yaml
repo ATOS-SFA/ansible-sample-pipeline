@@ -6,7 +6,7 @@ on:
 
 jobs:  
   ansible-lint-check:
-    runs-on: atos-sfa
+    runs-on: ari
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
