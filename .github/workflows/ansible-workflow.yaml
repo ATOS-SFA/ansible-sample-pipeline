@@ -20,10 +20,10 @@ jobs:
     - name: testing ansible ping
       run: ansible all -m ping
                       
-  #   - name: Lint Ansible Playbook
-  #     uses: ansible/ansible-lint-action@main
-  #     with:
-  #       targets: "main.yaml"
+    - name: Lint Ansible Playbook
+      uses: ansible/ansible-lint-action@main
+      with:
+        targets: "main.yaml"
   
   # deploy-ansible-playbook:
   #   needs: ansible-lint-check
