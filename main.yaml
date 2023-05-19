@@ -4,8 +4,8 @@
   become_user: root
   tasks:
 
-    - name: list files
-      shell: ls -al
+    - name: List files
+      ansible.builtin.shell: ls -al
     # - name: Ensure apache is at the latest version
     #   ansible.builtin.apt:
     #     name: apache2
