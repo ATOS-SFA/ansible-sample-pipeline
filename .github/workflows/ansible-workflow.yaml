@@ -18,14 +18,10 @@ jobs:
     #     ansible --version
 
     - name: Connect to Azure VM 
-      run: |        
-        yamini=${{ secrets.AZURE_PEM }} 
-        echo yamini >> test.pem
-              
-        chmod 400 test.pem
-        ll
-
-        ssh -i test.pem azureuser@20.103.151.129
+      run: |
+        ssh-keygen -t rsa -N ''  
+        ls     
+        
 
     - name: testing ansible ping
       run: ansible all -i 20.103.151.129
@@ -46,4 +42,12 @@ jobs:
 
   #   - name: checking status 
   #     run: sudo systemctl status apache2   
+
+  # yamini=${{ secrets.AZURE_PEM }} 
+  #       echo yamini >> test.pem
+              
+  #       chmod 400 test.pem
+  #       ll
+
+  #       ssh -i test.pem azureuser@20.103.151.129
 
