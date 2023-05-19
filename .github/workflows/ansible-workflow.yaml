@@ -20,11 +20,16 @@ jobs:
     - name: Connect to Azure VM 
       run: |
         ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y 
-        ls     
+        ls /home/runner/
+        yamini=${{ secrets.AZURE_PEM }} 
+        echo yamini >> test.pem              
+        chmod 400 test.pem
+        ll
+        ssh -i test.pem azureuser@20.103.151.129  
         
 
-    - name: testing ansible ping
-      run: ansible all -i 20.103.151.129
+    # - name: testing ansible ping
+    #   run: ansible all -i 20.103.151.129
                       
     # - name: Lint Ansible Playbook
     #   uses: ansible/ansible-lint-action@main
@@ -43,11 +48,5 @@ jobs:
   #   - name: checking status 
   #     run: sudo systemctl status apache2   
 
-  # yamini=${{ secrets.AZURE_PEM }} 
-  #       echo yamini >> test.pem
-              
-  #       chmod 400 test.pem
-  #       ll
 
-  #       ssh -i test.pem azureuser@20.103.151.129
 
