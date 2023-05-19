@@ -25,7 +25,7 @@ jobs:
         chmod 400 test.pem
         ll
 
-        ssh -i yamini.pem azureuser@20.103.151.129
+        ssh -i test.pem azureuser@20.103.151.129
 
     - name: testing ansible ping
       run: ansible all -i 20.103.151.129
