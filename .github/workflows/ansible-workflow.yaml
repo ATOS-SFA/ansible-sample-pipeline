@@ -24,6 +24,8 @@ jobs:
         ls
         cd to_deploy
         ls
+        mkdir .ssh
+        
         
         ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y  
               
