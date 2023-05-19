@@ -6,7 +6,7 @@ on:
 
 jobs:  
   ansible-lint-check:
-    runs-on: ubuntu-latest
+    runs-on: atos-sfa
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
@@ -17,20 +17,20 @@ jobs:
         sudo apt-get -y install ansible; \
         ansible --version
                       
-    - name: Lint Ansible Playbook
-      uses: ansible/ansible-lint-action@main
-      with:
-        targets: "main.yaml"
+  #   - name: Lint Ansible Playbook
+  #     uses: ansible/ansible-lint-action@main
+  #     with:
+  #       targets: "main.yaml"
   
-  deploy-ansible-playbook:
-    needs: ansible-lint-check
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v1
+  # deploy-ansible-playbook:
+  #   needs: ansible-lint-check
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v1
 
-    - name: Running playbook
-      run: ansible-playbook main.yaml
+  #   - name: Running playbook
+  #     run: ansible-playbook main.yaml
 
-    - name: checking status 
-      run: sudo systemctl status apache2   
+  #   - name: checking status 
+  #     run: sudo systemctl status apache2   
 
