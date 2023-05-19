@@ -20,8 +20,11 @@ jobs:
     - name: Connect to Azure VM 
       run: |
         echo ${{ secrets.AZURE_PEM }} >> yamini.pem
-        cat pem      
-        ssh -i ${{ secrets.AZURE_PEM }} azureuser@20.103.151.129
+        cat yamini.pem        
+        chmod 400 yamini.pem
+        ll
+
+        ssh -i yamini.pem azureuser@20.103.151.129
 
     - name: testing ansible ping
       run: ansible all -i 20.103.151.129
