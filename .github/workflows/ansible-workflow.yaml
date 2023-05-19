@@ -21,11 +21,10 @@ jobs:
 
     - name: Connect to Azure VM 
       run: |
-        cd to_deploy
-        ls -a to_deploy
-        ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y        
-        ls /home/runner/.ssh/
-        cd /home/runner/
+        ls
+        
+        ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y  
+              
         yamini=${{ secrets.AZURE_PEM }} 
         echo yamini >> test.pem              
         chmod 400 test.pem
