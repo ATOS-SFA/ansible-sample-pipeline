@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
+      with:
+          path: to_deploy 
     
     # - name: Set up Ansible
     #   run: |
@@ -19,6 +21,8 @@ jobs:
 
     - name: Connect to Azure VM 
       run: |
+        cd to_deploy
+        ls -a to_deploy
         ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y        
         ls /home/runner/.ssh/
         cd /home/runner/
@@ -26,7 +30,7 @@ jobs:
         echo yamini >> test.pem              
         chmod 400 test.pem
         cat test.pem
-        ssh -i test.pem azureuser@20.103.151.129  
+        ssh -i test.pem azureuser@20.103.151.129
         
 
     # - name: testing ansible ping
