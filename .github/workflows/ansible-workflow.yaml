@@ -13,27 +13,21 @@ jobs:
       with:
           path: to_deploy 
     
-    # - name: Set up Ansible
-    #   run: |
-    #     sudo apt-get -y update; \
-    #     sudo apt-get -y install ansible; \
-    #     ansible --version
+    - name: Set up Ansible
+      run: |
+        sudo apt-get -y update; \
+        sudo apt-get -y install ansible; \
+        ansible --version
 
     - name: Connect to Azure VM 
       run: |
-        ls
-        cd to_deploy
-        ls
-        mkdir .ssh
-        
-        
-        ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa <<< y  
-              
-        yamini=${{ secrets.AZURE_PEM }} 
-        echo yamini >> test.pem              
-        chmod 400 test.pem
-        cat test.pem
-        ssh -i test.pem azureuser@20.103.151.129
+        ls             
+        PEM_KEY=${{ secrets.AZURE_PEM }} 
+        echo PEM_KEY >> PEM_KEY.pem              
+        chmod 400 PEM_KEY.pem
+        ls to_deploy
+       
+      
         
 
     # - name: testing ansible ping

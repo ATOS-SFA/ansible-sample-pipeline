@@ -1,7 +1,7 @@
 - name: Playbook
-  hosts: 20.103.151.129
+  hosts: all #20.103.151.129
   become: true
-  become_user: root
+  remote_user: azureuser
   tasks:
 
     - name: List files

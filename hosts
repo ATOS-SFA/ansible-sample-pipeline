@@ -1,0 +1,4 @@
+test-servers:
+    hosts:
+        test-server01:
+            ansible_host: 20.103.151.129
