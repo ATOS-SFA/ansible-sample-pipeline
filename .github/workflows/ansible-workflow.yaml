@@ -10,8 +10,7 @@ jobs:
     steps:
     - name: checkout repo
       uses: actions/checkout@v2
-      with:
-          path: to_deploy 
+       
     
     - name: Set up Ansible
       run: |
@@ -20,12 +19,13 @@ jobs:
         ansible --version
 
     - name: Connect to Azure VM 
-      run: |       
-        ls to_deploy          
-        PEM_KEY=${{ secrets.AZURE_PEM }} 
-        echo PEM_KEY >> PEM_KEY.pem              
-        sudo chmod 400 PEM_KEY.pem
-        
+      run: |
+        echo ${{ secrets.AZURE_PEM }} > test_key.pem
+        chmod 400 test_key.pem
+        ansible-playbook main.yaml -i hosts --key-file test_key.pem
+
+               
+    
        
       
         
