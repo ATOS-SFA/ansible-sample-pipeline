@@ -22,7 +22,8 @@ jobs:
       run: |
         echo "${{ secrets.AZURE_PEM }}" | tr -d '\r' > test_key.pem
         chmod 400 test_key.pem
-        ansible-playbook main.yaml -i hosts --key-file test_key.pem
+        
+        ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook main.yaml -i hosts --key-file test_key.pem 
 
                
     
