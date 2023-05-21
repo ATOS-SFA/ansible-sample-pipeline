@@ -20,12 +20,12 @@ jobs:
         ansible --version
 
     - name: Connect to Azure VM 
-      run: |
-        ls             
+      run: |       
+        ls to_deploy          
         PEM_KEY=${{ secrets.AZURE_PEM }} 
         echo PEM_KEY >> PEM_KEY.pem              
-        chmod 400 PEM_KEY.pem
-        ls to_deploy
+        sudo chmod 400 PEM_KEY.pem
+        
        
       
         
