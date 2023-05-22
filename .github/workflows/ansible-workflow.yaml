@@ -1,4 +1,4 @@
-name: deploy ansible and run ansible playbook
+name: deploy ansible and run ansible playbook on Azure VM
 
 on:
   push:
