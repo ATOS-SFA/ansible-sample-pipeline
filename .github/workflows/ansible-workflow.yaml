@@ -1,5 +1,5 @@
-name: deploy ansible and run ansible playbook testing
-
+name: deploy ansible and run ansible playbook on azure VM
+ 
 on:
   push:
     branches: [feature/init]
