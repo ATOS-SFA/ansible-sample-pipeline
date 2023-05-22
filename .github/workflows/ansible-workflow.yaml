@@ -2,7 +2,7 @@ name: deploy ansible and run ansible playbook
 
 on:
   push:
-    branches: [feature/init, main]
+    branches: [feature/ansible-tower-test]
 
 jobs:  
   ansible-lint-check:
@@ -18,13 +18,16 @@ jobs:
         sudo apt-get -y install ansible; \
         ansible --version
 
-    - name: Connect to Azure VM 
-      run: |
-        # echo "${{ secrets.AZURE_PEM }}" | tr -d '\r' > test_key.pem
-        echo "${{ secrets.AZURE_PEM }}" > test_key.pem
-        chmod 400 test_key.pem
+      - name: Running playbook
+        run: ansible-playbook main.yaml
+
+    # - name: Connect to Azure VM 
+    #   run: |
+    #     # echo "${{ secrets.AZURE_PEM }}" | tr -d '\r' > test_key.pem
+    #     echo "${{ secrets.AZURE_PEM }}" > test_key.pem
+    #     chmod 400 test_key.pem
         
-        ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook main.yaml -i hosts --key-file test_key.pem 
+    #     ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook main.yaml -i hosts --key-file test_key.pem 
 
                
     
