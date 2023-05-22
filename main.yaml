@@ -8,10 +8,22 @@
     - name: List files
       command: ls -al
 
+    - name: Using pause ansible module for 1 min pause to demo terigger ansible job template
+      ansible.builtin.debug:
+        msg:
+          - "Welcome to Anible Tower testing"
+          - "Pause 1 min"
+
+    - name: Pause for 1 minutes to build app cache
+      ansible.builtin.pause:
+        minutes: 1
+
     - name: Prints two lines of messages, but only if there is an environment value set
       ansible.builtin.debug:
         msg:
           - "Welcome to Anible Tower testing"
+          - " Pause finished"
+          - "Demo t"
     # - name: Ensure apache is at the latest version
     #   ansible.builtin.apt:
     #     name: apache2
