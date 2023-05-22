@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: checkout repo
-      uses: actions/checkout@v2      
+      uses: actions/checkout@v2            
     
     - name: Set up Ansible
       run: |
@@ -17,8 +17,8 @@ jobs:
         sudo apt-get -y install ansible; \
         ansible --version
 
-      - name: Running playbook
-        run: ansible-playbook main.yaml
+    - name: Running playbook
+      run: ansible-playbook main.yaml
 
     # - name: Connect to Azure VM 
     #   run: |
