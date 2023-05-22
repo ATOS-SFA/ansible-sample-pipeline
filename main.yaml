@@ -11,7 +11,7 @@
     - name: Prints two lines of messages, but only if there is an environment value set
       ansible.builtin.debug:
         msg:
-          - "HELOO Anible testing"
+          - "Welcome to Anible Tower testing"
     # - name: Ensure apache is at the latest version
     #   ansible.builtin.apt:
     #     name: apache2
