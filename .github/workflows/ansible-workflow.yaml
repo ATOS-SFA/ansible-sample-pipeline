@@ -1,8 +1,8 @@
-name: deploy ansible and run ansible playbook
+name: deploy ansible and run ansible playbook testing
 
 on:
   push:
-    branches: [feature/init, main]
+    branches: [feature/init]
 
 jobs:  
   ansible-lint-check:
