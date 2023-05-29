@@ -1,5 +1,5 @@
 - name: Playbook
-  hosts: all #20.103.151.129
+  hosts: all 
   become: true
   remote_user: azureuser
   tasks:
@@ -7,10 +7,10 @@
     - name: List files
       command: ls -al
 
-    - name: Prints two lines of messages, but only if there is an environment value set
+    - name: Ansible task to show debug or print message
       ansible.builtin.debug:
         msg:
-          - "HELOO Anible testing"
+          - "Anible Execution is running as expected"
 
     # - name: test ansible tower
     #   command: curl -k https://localhost:8043/#/home
